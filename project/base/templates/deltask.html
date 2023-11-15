@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {%load static%} {% block content %}
+<div
+  class="container-fluid min-vh-100 d-flex justify-content-center align-items-center"
+>
+  <div
+    id="deletetask"
+    class="container border rounded-5 p-5 bg-white shadow box-area"
+  >
+    <form method="POST" action="">
+      {% csrf_token %}
+      <h1>Are you sure you want to delete this task?</h1>
+      <input
+        class="btn btn-danger mt-5"
+        type="submit"
+        role="button"
+        value="Delete"
+      />
+      <a class="btn btn-primary mt-5" href="{% url 'main' %}" role="button"
+        >Back</a
+      >
+    </form>
+  </div>
+</div>
+{% endblock content %}

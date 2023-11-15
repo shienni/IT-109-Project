@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block content %} {%load static%} 
+
+
+<div
+  class="container-fluid min-vh-100 d-flex justify-content-center align-items-center"
+>
+  <form action="" method="POST">
+    {% csrf_token %} 
+    <div class="row border rounded-5 p-3 bg-white shadow box-area">
+      <div
+        class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box mb-3"
+      >
+        <div class="featured-image m-3">
+          <img
+            src="{% static 'assets/img/Tlogo.png' %}"
+            class="img-fluid"
+            style="width: 500px"
+          />
+        </div>
+      </div>
+      <div
+        class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column right-box"
+      >
+        <form>
+          <div class="mb-3">
+            {{form.username}}   
+            
+          </div>
+          <div class="mb-3">
+            {{form.password}}   
+          </div>
+        </form>
+        <button type="submit"  class="btn btn-primary">Register</button>
+        <p class="mt-3">
+          Already have an account? <a href="{% url 'login' %}">Login</a>
+        </p>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

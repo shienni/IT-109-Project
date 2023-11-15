@@ -1,0 +1,39 @@
+{%extends 'base.html'%} {%block content%} {%load static%}
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center justify-content-between">
+    <h1 class="logo">
+      <a href="{% url 'main' %}"
+        ><img
+          src="{% static 'assets/img/Tlogo.png' %}"
+          class="img-fluid"
+        />TaskSpace</a
+      >
+    </h1>
+    <!-- Uncomment below if you prefer to use an image logo -->
+    <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li>
+          <a class="text-white" href="{% url 'logout' %}">Logout</a>
+        </li>
+        <li>
+          <a class="text-white" href="{% url 'logout' %}">
+            {{request.user|title}}
+          </a>
+        </li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+    <!-- .navbar -->
+  </div>
+</header>
+<div
+  class="container-fluid min-vh-100 d-flex justify-content-center align-items-center"
+>
+  <div class="container border rounded-5 bg-white shadow box-area">
+    {{task.title}}
+    <br />{{task.description}}
+  </div>
+</div>
+{%endblock%}
