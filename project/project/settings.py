@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'base',
     'project',
+    'rest_framework',
     'captcha'
 ]
 
