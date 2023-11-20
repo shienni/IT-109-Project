@@ -1,9 +1,9 @@
-{% extends 'base.html' %} {% block content %} {%load static%}
+{% extends 'base.html' %}  {% block content %} {% load static %}
 
 <header id="header" class="fixed-top">
   <div class="container d-flex align-items-center justify-content-between">
     <h1 class="logo"><a href="{% url 'main' %}"><img
-      src="{% static 'assets/img/Tlogo.png' %}"
+      src="{% static 'assets/img/services.png' %}"
       class="img-fluid"
     />TaskSpace</a></h1>
     <!-- Uncomment below if you prefer to use an image logo -->
@@ -25,17 +25,17 @@
     <!-- .navbar -->
   </div>
 </header>
+<div class="">Hello {{request.user|title}}</div>
 <div
   class="container-fluid min-vh-100 d-flex justify-content-center align-items-center"
 >
 
 <div
   id="taskcontainer"
-  class="container border rounded-5  bg-white shadow box-area"
+  class="container border rounded-4 bg-white shadow-sm box-area"
 >
   <div class="container">
     <div class="row">
-      <div class="col-3 mt-4">Hello {{request.user|title}}</div>
       <div class="col-6 mt-4">
         <form method="GET" action="">
           {% csrf_token %}
@@ -43,7 +43,7 @@
             type="text"
             name="s"
             class="form-control form-input"
-            placeholder="Search Task..."
+            placeholder="Search"
           />
           
       </div>
@@ -52,33 +52,33 @@
       </div>
     </form>
     
-      <div id="tasks-list" class="container border-bottom border-top mt-5">
+      <div id="tasks-list" class="container mx-2 ps-4 pe-4 px-4 py-1 border ">
         {%if task%} {%for Task in task%}
 
-          <div class="row border-bottom ">
-            <div class="col mt-5"><a href="{% url 'showtask' Task.id %}">{{ Task.title }} </a></div>
-            <div class="col text-end mt-5">
+          <div class="row">
+            <div class="col mt-2 mb-2"><a href="{% url 'showtask' Task.id %}">{{ Task.title }} </a></div>
+            <div class="col text-end mt-2 mb-2">
 
-              <a href="{% url 'edit' Task.id %}">Edit</a>
-              <a href="{% url 'deltask' Task.id %}">Delete</a>
+              <a href="{% url 'edit' Task.id %}"><i class="icon bi bi-pencil-square"></i>Edit</a>
+              <a href="{% url 'deltask' Task.id %}"><i class="icon bi bi-x-circle-fill"></i>Delete</a>
             </div>
           </div>
         {%endfor%}  
       </div>
 
         {%else%} {%for Task in tasklist%}
-        <div class="row border-bottom ">
-          <div class="col mt-5"><a href="{% url 'showtask' Task.id %}">{{ Task.title }} </a></div>     
-          <div class="col text-end mt-5">
-            <a href="{% url 'edit' Task.id %}">Edit</a>
-            <a href="{% url 'deltask' Task.id %}">Delete</a>
+        <div class="row border-bottom  p-2 ps-3 pe-3 bg-white box-area">
+          <div class="col mt-2 mb-2"><a href="{% url 'showtask' Task.id %}">{{ Task.title }} </a></div>     
+          <div class="col text-end mt-2 mb-2">
+            <a href="{% url 'edit' Task.id %}"><i class="icon bi bi-pencil-square"></i> Edit</a>
+            <a href="{% url 'deltask' Task.id %}"><i class="icon bi bi-x-circle-fill ps-3"></i> Delete</a>
           </div>
         </div>
         {%endfor%}
       </div>
       {%endif%}
       <div class="mt-2 pb-3">
-        <a href="{% url 'task_create' %}" class="btn btn-primary" role="button"> <i class="bi bi-plus"></i>Task</a>
+        <a href="{% url 'task_create' %}" class="btn btn-primary" role="button"> Create Task</a>
       </div> 
     </div>
   </div>

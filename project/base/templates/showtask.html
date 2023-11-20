@@ -4,7 +4,7 @@
     <h1 class="logo">
       <a href="{% url 'main' %}"
         ><img
-          src="{% static 'assets/img/Tlogo.png' %}"
+          src=""
           class="img-fluid"
         />TaskSpace</a
       >
@@ -31,9 +31,10 @@
 <div
   class="container-fluid min-vh-100 d-flex justify-content-center align-items-center"
 >
-  <div class="container border rounded-5 bg-white shadow box-area">
+  <div class="container row border rounded-4 pb-3 p-2 ps-3 pe-3 bg-white shadow-sm box-area">
     {{task.title}}
-    <br />{{task.description}}
+    <hr class="solid">
+    {{task.description}}
   </div>
 </div>
 {%endblock%}

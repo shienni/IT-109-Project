@@ -6,12 +6,12 @@
     id="taskcreate"
     class="container border rounded-5 p-5 bg-white shadow box-area"
   >
-    <h1>Create Task</h1>
+    <h1 class="create-task-header">Create Task</h1>
     <div class="container">
       <form method="POST" action="">
         {% csrf_token %}
-        <div class="row mt-5">{{form.title}}</div>
-        <div class="row mt-5">{{form.description}}</div>
+        <div class="row mt-4">{{form.title}}</div>
+        <div class="row mt-3">{{form.description}}</div>
         <div class="row">
           <div class="col mt-5">
             <a class="btn btn-primary" href="{% url 'main' %}" role="button"
