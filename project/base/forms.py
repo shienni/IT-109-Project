@@ -24,13 +24,16 @@ class UserCreationForm(forms.ModelForm):
         return user
 
 class CreateTask(forms.ModelForm):
-        
+        category = forms.ModelChoiceField(queryset=models.Category.objects.all(), empty_label="Select Category",
+                                      widget=forms.Select(attrs={'class': 'form-control'}))
+
         class Meta:
              model = models.Task
-             fields = ['title','description','complete']
+             fields = ['title','description','complete', 'category']
 
              widgets = {
                   'title': forms.TextInput(attrs={'placeholder': 'Title',  'class': 'form-control'}),
                   'description': forms.Textarea(attrs={'placeholder': 'Enter Description',  'class': 'form-control'}),
-                  'complete': forms.CheckboxInput(attrs={'placeholder': 'Title',  'class': 'form-check-label' })
+                  'complete': forms.CheckboxInput(attrs={'placeholder': 'Title',  'class': 'form-check-label' }),
+                  'category': forms.Select(attrs={'class': 'form-control'})
              }

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 from django.contrib import messages
 
@@ -11,7 +11,7 @@ from .models import Task
 from .forms import UserCreationForm, CreateTask
 
 
-@login_required()
+@login_required(login_url="/login")
 def main(request):
         if 's' in request.GET:
              s = request.GET['s']
@@ -21,7 +21,7 @@ def main(request):
          tasklist = Task.objects.filter(user=request.user.id)
          return render(request, 'main.html', {'tasklist': tasklist})
 
-@login_required()
+@login_required(login_url="/login")
 def edit(request,Task_id):
      task = Task.objects.get(pk=Task_id)
      form = CreateTask(request.POST or None,instance=task)
@@ -30,12 +30,12 @@ def edit(request,Task_id):
           return redirect('main')
      return render(request, 'edit.html' ,{'task':task,'form':form})
 
-@login_required()
+@login_required(login_url="/login")
 def ShowTask(request,Task_id):
      task = Task.objects.get(pk=Task_id)
      return render(request, 'showtask.html' ,{'task':task})
 
-@login_required()
+@login_required(login_url="/login")
 def DelTask(request,Task_id):
      taskdel = Task.objects.get(pk=Task_id)
      if request.method == 'POST':
@@ -71,7 +71,7 @@ def RegisterPage(request):
     context = {'form' :form}
     return render(request, 'register.html', context)
 
-@login_required()
+@login_required(login_url="/login")
 def Taskcreate(request):
     form = CreateTask
 
